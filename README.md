@@ -9,4 +9,4 @@ The APIs are organized inside a dedicated router, and Swagger documentation is a
 
 This milestone focuses only on core data management and search functionality. Upcoming milestones will include dynamic pricing, booking workflow, concurrency handling, and frontend integration.
 
-Overall, Milestone 1 provides a solid foundation for the rest of the project. The system is clean, modular, and ready for future expansion.
+Overall,this provides Milestone 1 
