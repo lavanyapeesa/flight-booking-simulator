@@ -11,10 +11,8 @@ from app.models import Flight
 
 router = APIRouter(prefix="/flights", tags=["Flights"])
 
-
-# ---------------------------------------------------------
 # Correct get_db dependency
-# ---------------------------------------------------------
+
 def get_db():
     db = SessionLocal()
     try:
@@ -23,28 +21,23 @@ def get_db():
         db.close()
 
 
-# ---------------------------------------------------------
-# 1️⃣ Get all flights
-# ---------------------------------------------------------
+# Get all flights
 @router.get("/", response_model=List[FlightResponse])
 def get_all_flights(db: Session = Depends(get_db)):
     return db.query(Flight).all()
 
-
-# ---------------------------------------------------------
-# 2️⃣ Search flights (with filters + sorting + pagination)
-# ---------------------------------------------------------
+#  Search flights (with filters + sorting + pagination)
 @router.get("/search", response_model=List[FlightResponse])
 def search_flights(
     origin: Optional[str] = None,
     destination: Optional[str] = None,
     date: Optional[str] = None,
-    airline: Optional[str] = None,           # ⭐ NEW Filter (Option A)
-    travel_class: Optional[str] = None,       # ⭐ NEW Filter (Option A)
-    status: Optional[str] = None,             # ⭐ NEW Filter (Option A)
+    airline: Optional[str] = None,           
+    travel_class: Optional[str] = None,      
+    status: Optional[str] = None,             
     sort_by: Optional[str] = None,
-    limit: int = 10,                           # ⭐ Pagination (Option B)
-    offset: int = 0,                           # ⭐ Pagination (Option B)
+    limit: int = 10,                          
+    offset: int = 0,                           
     db: Session = Depends(get_db)
 ):
     query = db.query(Flight)
@@ -98,9 +91,7 @@ def search_flights(
     return query.all()
 
 
-# ---------------------------------------------------------
-# 3️⃣ Simulated Airline Schedule API (Option C)
-# ---------------------------------------------------------
+# Simulated Airline Schedule API (Option C)
 @router.get("/external-feed")
 def airline_feed_simulator():
     sample_airlines = ["IndiGo", "Air India", "Vistara", "SpiceJet"]
