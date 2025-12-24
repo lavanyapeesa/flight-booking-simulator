@@ -9,7 +9,6 @@ from app.database import SessionLocal
 from app.schemas import FlightResponse
 from app.models import Flight
 
-# ⭐ Import pricing + demand simulator
 from app.utils.pricing_engine import calculate_dynamic_price
 from app.utils.demand_simulator import get_demand_factor
 
@@ -17,9 +16,8 @@ from app.utils.demand_simulator import get_demand_factor
 router = APIRouter(prefix="/flights", tags=["Flights"])
 
 
-# ---------------------------------------------------------
 # DB DEPENDENCY
-# ---------------------------------------------------------
+
 def get_db():
     db = SessionLocal()
     try:
@@ -28,9 +26,8 @@ def get_db():
         db.close()
 
 
-# ---------------------------------------------------------
-# 1️⃣ GET ALL FLIGHTS (with dynamic pricing)
-# ---------------------------------------------------------
+# GET ALL FLIGHTS (with dynamic pricing)
+
 @router.get("/", response_model=List[FlightResponse])
 def get_all_flights(db: Session = Depends(get_db)):
     flights = db.query(Flight).all()
@@ -47,11 +44,9 @@ def get_all_flights(db: Session = Depends(get_db)):
         )
     return flights
 
+# SEARCH FLIGHTS (filters + sort + pagination + dynamic price)
 
-# ---------------------------------------------------------
-# 2️⃣ SEARCH FLIGHTS (filters + sort + pagination + dynamic price)
-# ---------------------------------------------------------
-@router.get("/search", response_model=List[FlightResponse])
+   @router.get("/search", response_model=List[FlightResponse])
 def search_flights(
     origin: Optional[str] = None,
     destination: Optional[str] = None,
@@ -114,9 +109,7 @@ def search_flights(
     return flights
 
 
-# ---------------------------------------------------------
-# 3️⃣ SIMULATED EXTERNAL AIRLINE API
-# ---------------------------------------------------------
+# SIMULATED EXTERNAL AIRLINE API
 @router.get("/external-feed")
 def airline_feed_simulator():
     sample_airlines = ["IndiGo", "Air India", "Vistara", "SpiceJet"]

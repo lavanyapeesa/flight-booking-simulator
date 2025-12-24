@@ -6,7 +6,7 @@ def calculate_dynamic_price(base_fare, seats_available, total_seats, departure_t
     """
 
     # -------------------------
-    # 1️⃣ Seat Availability Factor
+    # Seat Availability Factor
     # -------------------------
     seats_left_percentage = seats_available / total_seats
 
@@ -20,7 +20,7 @@ def calculate_dynamic_price(base_fare, seats_available, total_seats, departure_t
         seat_factor = base_fare * 0.40  # very low seats → very high price
 
     # -------------------------
-    # 2️⃣ Time to Departure Factor
+    # Time to Departure Factor
     # -------------------------
     # closer flight → higher prices
     now = datetime.utcnow()
@@ -36,7 +36,7 @@ def calculate_dynamic_price(base_fare, seats_available, total_seats, departure_t
         time_factor = 0
 
     # -------------------------
-    # 3️⃣ Demand Factor (from simulator)
+    #  Demand Factor (from simulator)
     # -------------------------
     if demand_factor == "HIGH":
         demand_adjustment = base_fare * 0.25
