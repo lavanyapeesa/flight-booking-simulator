@@ -12,3 +12,10 @@ After completing the basic flight search system in Milestone 1, Milestone 2 focu
 The search API was upgraded to support more filters such as airline, travel class, and flight status, along with pagination for better data handling. Every time a user searches, the price shown is dynamically updated using the new pricing logic. I also added a small simulated external API that returns live-style airline status such as delays or cancellations.
 
 Overall, Milestone 2 enhances the backend by adding intelligent pricing, better filtering, and more realistic behavior, preparing the system for the next stage where users will be able to book flights, manage seats, and handle concurrency.
+
+
+After enhancing the system with dynamic pricing in Milestone 2, Milestone 3 focuses on implementing the complete booking workflow and seat management logic, which is a critical part of any real-world airline reservation system. In this milestone, I designed and implemented the booking module that allows users to book a flight by providing passenger details and seat information. During booking, the system validates flight availability, prevents booking when seats are unavailable, and automatically reduces the seat count once a booking is confirmed.
+
+A unique Passenger Name Record (PNR) is generated for every successful booking, which acts as the booking identifier. I also implemented booking cancellation functionality, where users can cancel a booking using the PNR, and the system safely restores the seat availability. Additionally, a booking history API was added to retrieve past bookings based on passenger details, enabling better tracking and management of reservations.
+
+Overall, Milestone 3 completes the core backend flow of search → pricing → booking → cancellation, ensuring proper seat updates, preventing invalid bookings, and maintaining data consistency. With this milestone, the backend now closely mimics a real airline booking system and is ready for advanced features like concurrency handling, transaction safety, and frontend integration in future milestones.
