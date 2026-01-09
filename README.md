@@ -21,3 +21,5 @@ A unique Passenger Name Record (PNR) is generated for every successful booking, 
 Overall, Milestone 3 completes the core backend flow of search → pricing → booking → cancellation, ensuring proper seat updates, preventing invalid bookings, and maintaining data consistency. With this milestone, the backend now closely mimics a real airline booking system and is ready for advanced features like concurrency handling, transaction safety, and frontend integration in future milestones.
 
 Milestone 4 focuses on integrating a frontend interface with the FastAPI backend to provide a real user experience. A responsive flight search UI was built using HTML, CSS, and JavaScript, connected through CORS-enabled APIs with dynamic pricing support. Users can search flights by origin, destination, and date while viewing real-time fare updates. Future enhancements include secure user authentication, complete booking and payment flow, seat selection, and deployment as a full-scale web application.
+
+The Final Deployment Link:   https://flight-booking-simulator-backend-8dqn.onrender.com/docs
